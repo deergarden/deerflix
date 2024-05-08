@@ -2,7 +2,7 @@ import axios from 'axios'
 
 //TMDBからのbaseURLリクエストを作成
 const instance = axios.create({
-  baseURL: "https://api.themoviedb.org/3",
+  baseURL: "https://api.dmm.com/",
 });
 
 export default instance;

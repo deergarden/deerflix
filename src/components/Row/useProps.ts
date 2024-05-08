@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "../../axios";
 import { Movie } from "../../type.ts";
-import { requests } from "../../request.ts";
 
 export const useProps = (fetchUrl: string) => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -10,11 +9,14 @@ export const useProps = (fetchUrl: string) => {
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
-      const movies = request.data.results.map((movie: Movie) => ({
-        id: movie.id,
-        name: movie.name,
-        poster_path: movie.poster_path,
-        backdrop_path: movie.backdrop_path,
+      console.log(request.data.result.items);
+
+      const movies = request.data.result.items.map((movie: Movie) => ({
+        id: movie.content_id,
+        name: movie.title,
+        poster_path: movie.imageURL.small,
+        backdrop_path: movie.imageURL.small,
+        sample_url: movie.sampleMovieURL ? movie.sampleMovieURL.size_720_480 : undefined,
       }));
       setMovies(movies);
       return request;
@@ -26,10 +28,13 @@ export const useProps = (fetchUrl: string) => {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-      const moviePlayUrl = await axios.get(requests.fetchMovieVideos(movie.id));
-      setTrailerUrl(moviePlayUrl.data.results[0]?.key);
+      const moviePlayUrl = movie.sample_url;
+      if (moviePlayUrl !== undefined) {
+        window.open(moviePlayUrl, '_blank');
+      }
     }
   };
+
 
   return {
     movies,

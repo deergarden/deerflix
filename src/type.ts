@@ -10,4 +10,5 @@ export type Movie = {
     sampleMovieURL: string;
     sample_url: string;
     size_720_480: string;
+    large: string;
 };

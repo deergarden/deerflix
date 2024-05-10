@@ -9,15 +9,16 @@ function App() {
       <Header />
       <Banner />
       <Row
-        title="NETFLIX ORIGINALS"
-        fetchUrl={requests.fetchNetflixOriginals}
+        title="Ranking"
+        fetchUrl={requests.fetchRanked}
         isLargeRow />
+      <Row title="Latest" fetchUrl={requests.fetchLatest} />
       <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
-      <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
+      {/* <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
       <Row title="News Movies" fetchUrl={requests.fetchNewsMovies} />
       <Row title="Kids Movies" fetchUrl={requests.fetchKidsMovies} />
       <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
-      <Row title="Documentaries" fetchUrl={requests.fetchDocumentMovies} />
+      <Row title="Documentaries" fetchUrl={requests.fetchDocumentMovies} /> */}
     </div>
   );
 }

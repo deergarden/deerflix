@@ -30,7 +30,6 @@ export const Layout = ({
   handleClick,
   trailerUrl,
 }: LayoutProps) => {
-  const image_url = "https://image.tmdb.org/t/p/original";
   const opts: Options = {
     height: "390",
     width: "640",
@@ -47,10 +46,10 @@ export const Layout = ({
           <img
             key={movie.id}
             className={`object-contain w-full max-h-24 m-2 transform transition-transform duration-450 ${
-              isLargeRow ? "max-h-60 hover:scale-110" : "hover:scale-108"
+              isLargeRow ? "max-h-60 hover:scale-108" : "max-h-60 hover:scale-110"
             }`}
-            src={`${image_url}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
+            src={`${
+              isLargeRow ? movie.backdrop_path : movie.poster_path
             }`}
 
             onClick={() => handleClick(movie)}

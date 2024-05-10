@@ -7,12 +7,12 @@ export const useProps = () => {
   const [movie, setMovie] = useState<Movie>();
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(requests.fetchNetflixOriginals);
+      const request = await axios.get(requests.fetchRanked);
 
       // ① 取得した映像データからランダムでmovieに格納
       setMovie(
-        request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
+        request.data.result.items[
+          Math.floor(Math.random() * request.data.result.items.length - 1)
         ],
       );
     }

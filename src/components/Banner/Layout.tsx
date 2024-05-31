@@ -6,7 +6,6 @@ type Props = {
 };
 
 export const Layout = ({ movie, truncate }: Props) => {
-  console.log(movie);
 
   return (
     <header

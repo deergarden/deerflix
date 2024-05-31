@@ -9,7 +9,6 @@ export const useProps = (fetchUrl: string) => {
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
-      console.log(request.data.result.items[0].imageURL.large);
 
       const movies = request.data.result.items.map((movie: Movie) => ({
         id: movie.content_id,
